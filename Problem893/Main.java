@@ -7,22 +7,34 @@ class Main {
     private static final int DAYS_OF_LEAP_YEAR = 366;
 
     public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder stringBuilder = new StringBuilder(25000);
+
         String in;
-        while ((in = reader.readLine()) != null) {
+        final long startTime = System.currentTimeMillis();
+        while ((in = input.readLine()) != null) {
             StringTokenizer st = new StringTokenizer(in);
             int numberOfDays = Integer.parseInt(st.nextToken());    
             int dayOfMonth = Integer.parseInt(st.nextToken());    
             int month = Integer.parseInt(st.nextToken());    
             int year = Integer.parseInt(st.nextToken());
             String answer = getDate(numberOfDays, dayOfMonth, month, year);
-            if (answer != null)
-                System.out.println(answer);
+            if (answer != null) {
+                stringBuilder.append(answer);
+                stringBuilder.append('\n');
+            }
         }
+        input.close();
+        output.write(stringBuilder.toString());
+        final long finalTime = System.currentTimeMillis();
+        output.write("Final execution Time: " + (finalTime - startTime) + "\n");
+        output.flush();
+        output.close();
     }
 
     private static String getDate(int numberOfDays, int dayOfMonth, int month, int year) {
-   
+
             if (numberOfDays == 0 && dayOfMonth == 0 && month == 0 && year == 0)
                 return null;
 
