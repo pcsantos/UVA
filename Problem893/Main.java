@@ -2,6 +2,8 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    private final static int REGULAR_YEAR = 365;
+    private final static int LEAP_YEAR = 366;
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String in;
@@ -18,20 +20,11 @@ public class Main {
     private static String getDate(int numberOfDays, int dayOfMonth, int month, int year) {
     
             boolean currentYear = isLeapYear(year);
-            while()
             return null;
     }
-
-    private static boolean isLeapYear(int year) {
-        if (year % 4 == 0) {
-            if (year % 100 == 0) {
-                if (year % 400 == 0) {
-                    return true;
-                }
-            } else {
-                return true;
-            }
-        }    
-        return false;
+    public static boolean isLeapYear(int year) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, year);
+        return cal.getActualMaximum(Calendar.DAY_OF_YEAR) > REGULAR_YEAR;
     }
 }
