@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+class Main {
 
     private static final int DAYS_OF_REGULAR_YEAR = 365;
     private static final int DAYS_OF_LEAP_YEAR = 366;
