@@ -2,12 +2,13 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    private static final int REGULAR_YEAR = 365;
-    private static final int LEAP_YEAR = 366;
+
+    private static final int DAYS_OF_REGULAR_YEAR = 365;
+    private static final int DAYS_OF_LEAP_YEAR = 366;
+
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String in;
-        final long startTime = System.currentTimeMillis();
         while ((in = reader.readLine()) != null) {
             StringTokenizer st = new StringTokenizer(in);
             int numberOfDays = Integer.parseInt(st.nextToken());    
@@ -18,8 +19,6 @@ public class Main {
             if (answer != null)
                 System.out.println(answer);
         }
-        final long endTime = System.currentTimeMillis();
-        System.out.println("Total execution time: " + (endTime - startTime));
     }
 
     private static String getDate(int numberOfDays, int dayOfMonth, int month, int year) {
@@ -27,35 +26,24 @@ public class Main {
             if (numberOfDays == 0 && dayOfMonth == 0 && month == 0 && year == 0)
                 return null;
 
-            if (numberOfDays > 365) {
+            if (numberOfDays > DAYS_OF_REGULAR_YEAR) {
                 switch (month) {
-                    case 1:
-                        numberOfDays -= 31;
+                    case 1: numberOfDays -= 31;
                     case 2:
                         if (isLeapYear(year))
                             numberOfDays -= 29;
                         else
                             numberOfDays -= 28;
-                    case 3:
-                        numberOfDays -= 31;
-                    case 4:
-                        numberOfDays -= 30;
-                    case 5:
-                        numberOfDays -= 31;
-                    case 6:
-                        numberOfDays -= 30;
-                    case 7:
-                        numberOfDays -= 31;
-                    case 8:
-                        numberOfDays -= 31;
-                    case 9:
-                        numberOfDays -= 30;
-                    case 10:
-                        numberOfDays -= 31;
-                    case 11:
-                        numberOfDays -= 30;
-                    case 12:
-                        numberOfDays -= 31;
+                    case 3: numberOfDays -= 31;
+                    case 4: numberOfDays -= 30;
+                    case 5: numberOfDays -= 31;
+                    case 6: numberOfDays -= 30;
+                    case 7: numberOfDays -= 31;
+                    case 8: numberOfDays -= 31;
+                    case 9: numberOfDays -= 30;
+                    case 10: numberOfDays -= 31;
+                    case 11: numberOfDays -= 30;
+                    case 12: numberOfDays -= 31;
                 }
                 year++;
             }
@@ -63,22 +51,22 @@ public class Main {
             month = 1;
             do {
                 if (isLeapYear(year)) {
-                    if (numberOfDays - 366 <= 0) {
-                        break;
+                    if (numberOfDays - (DAYS_OF_LEAP_YEAR + 3 * DAYS_OF_REGULAR_YEAR) > 0) {
+                        numberOfDays -= (DAYS_OF_LEAP_YEAR + 3 * DAYS_OF_REGULAR_YEAR);
+                        year += 4;
                     } else {
-                        numberOfDays -= 366;
-                        year++;
+                        if (numberOfDays - DAYS_OF_LEAP_YEAR > 0) {
+                            numberOfDays -= DAYS_OF_LEAP_YEAR;
+                            year++;
+                        }
                     }
-
                 } else {
-                    if (numberOfDays - 365 <= 0) 
-                        break;
-                    else {
-                        numberOfDays -= 365;
+                    if (numberOfDays - DAYS_OF_REGULAR_YEAR > 0) {
+                        numberOfDays -= DAYS_OF_REGULAR_YEAR;
                         year++;
                     }
                 }
-            } while (numberOfDays > 365);
+            } while (numberOfDays > DAYS_OF_REGULAR_YEAR);
 
             while(true){
                 for (int currentMonth = month; currentMonth < 13; currentMonth++) {
