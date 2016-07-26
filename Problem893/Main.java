@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String in;
+        final long startTime = System.currentTimeMillis();
         while ((in = reader.readLine()) != null) {
             StringTokenizer st = new StringTokenizer(in);
             int numberOfDays = Integer.parseInt(st.nextToken());    
@@ -16,7 +17,9 @@ public class Main {
             String answer = getDate(numberOfDays, dayOfMonth, month, year);
             if (answer != null)
                 System.out.println(answer);
-        } 
+        }
+        final long endTime = System.currentTimeMillis();
+        System.out.println("Total execution time: " + (endTime - startTime));
     }
 
     private static String getDate(int numberOfDays, int dayOfMonth, int month, int year) {
@@ -24,7 +27,58 @@ public class Main {
             if (numberOfDays == 0 && dayOfMonth == 0 && month == 0 && year == 0)
                 return null;
 
+            if (numberOfDays > 365) {
+                switch (month) {
+                    case 1:
+                        numberOfDays -= 31;
+                    case 2:
+                        if (isLeapYear(year))
+                            numberOfDays -= 29;
+                        else
+                            numberOfDays -= 28;
+                    case 3:
+                        numberOfDays -= 31;
+                    case 4:
+                        numberOfDays -= 30;
+                    case 5:
+                        numberOfDays -= 31;
+                    case 6:
+                        numberOfDays -= 30;
+                    case 7:
+                        numberOfDays -= 31;
+                    case 8:
+                        numberOfDays -= 31;
+                    case 9:
+                        numberOfDays -= 30;
+                    case 10:
+                        numberOfDays -= 31;
+                    case 11:
+                        numberOfDays -= 30;
+                    case 12:
+                        numberOfDays -= 31;
+                }
+                year++;
+            }
             numberOfDays += dayOfMonth;
+            month = 1;
+            do {
+                if (isLeapYear(year)) {
+                    if (numberOfDays - 366 <= 0) {
+                        break;
+                    } else {
+                        numberOfDays -= 366;
+                        year++;
+                    }
+
+                } else {
+                    if (numberOfDays - 365 <= 0) 
+                        break;
+                    else {
+                        numberOfDays -= 365;
+                        year++;
+                    }
+                }
+            } while (numberOfDays > 365);
 
             while(true){
                 for (int currentMonth = month; currentMonth < 13; currentMonth++) {
@@ -73,8 +127,6 @@ public class Main {
     }
 
     private static boolean isLeapYear(int year) {
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.YEAR, year);
-        return cal.getActualMaximum(Calendar.DAY_OF_YEAR) > REGULAR_YEAR;
+        return ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0));
     }
 }
