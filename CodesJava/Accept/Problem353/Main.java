@@ -11,6 +11,7 @@ class Main {
             int numberOfPalindromes = getNumberOfPalindromes(word);
             System.out.println("The string '" + word + "' contains " + numberOfPalindromes + " palindromes.");
         }
+        input.close();
     }
 
     private static int getNumberOfPalindromes(String word) {

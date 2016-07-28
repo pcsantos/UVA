@@ -15,6 +15,7 @@ class Main {
             } while (isNotPalindrome(number));
             System.out.println(times + " " + number);
         }
+        input.close();
     }
 
     private static String reverseAndAdd(String number) {

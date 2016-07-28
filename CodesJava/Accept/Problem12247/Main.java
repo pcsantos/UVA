@@ -22,6 +22,7 @@ class Main {
             System.out.println(out);
             setCardsArrayToDefault();
         }
+        input.close();
     }
 
     private static void setCardsArrayToDefault() {

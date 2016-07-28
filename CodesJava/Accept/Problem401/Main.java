@@ -20,6 +20,7 @@ class Main {
             System.out.println(answer);
             System.out.println();
         }
+        input.close();
     }
 
     private static String getOutput(String word) {
