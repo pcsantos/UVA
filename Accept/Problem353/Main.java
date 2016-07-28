@@ -27,7 +27,6 @@ class Main {
                     palindromes.add(sub);
             }
         }
-
         return palindromes.size();
     }
 
