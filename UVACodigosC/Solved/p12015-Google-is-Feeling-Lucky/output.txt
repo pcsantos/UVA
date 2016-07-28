@@ -1,0 +1,35 @@
+Case #1:
+bing.com
+Case #2:
+apple.com
+Case #3:
+tumblr.com
+Case #4:
+tmall.com
+Case #5:
+onclickads.net
+Case #6:
+googleusercontent.com
+Case #7:
+google.ru
+Case #8:
+github.com
+Case #9:
+blogspot.com
+Case #10:
+blogger.com
+Case #11:
+google.it
+Case #12:
+adcash.com
+Case #13:
+google.com.hk
+reddit.com
+Case #14:
+ok.ru
+Case #15:
+weibo.com
+Case #16:
+facebook.com
+Case #17:
+dropbox.com
