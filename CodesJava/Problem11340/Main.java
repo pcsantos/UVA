@@ -7,7 +7,7 @@ class Main {
 
     public static void main(String[] args) throws IOException {
     
-        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));    
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in), 100001);    
         int casesTest = Integer.parseInt(input.readLine());
         for (int i = 0; i < casesTest; i++) {
             int numberOfPayableChars = Integer.parseInt(input.readLine());
@@ -30,9 +30,9 @@ class Main {
         input.close();
     }
 
-    private static int getPartialValue(String in) {
+    private static float getPartialValue(String in) {
     
-        int value = 0;
+        float value = 0;
         for (int i = 0; i < in.length(); i++) {
             String key = in.charAt(i)+"";
             if (tableValues.containsKey(key))
