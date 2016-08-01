@@ -5,7 +5,7 @@ import java.math.*;
 class Main {
     
     private static ArrayList<BigInteger> fib;
-    private static int MAX_VALUE = 500;
+    private static int MAX_VALUE = 5000;
     public static void main(String[] args) throws IOException {
         calcFib(); 
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
