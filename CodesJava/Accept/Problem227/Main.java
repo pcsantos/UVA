@@ -14,6 +14,8 @@ class Main {
         String[] in = new String[SIZE];
         int puzzleNumber = 1;
         while (!(in[0] = input.readLine()).equals("Z")) {
+            if(puzzleNumber > 1)
+                System.out.println();
             for (int i = 1; i < SIZE; i++) {
                 in[i] = input.readLine(); 
             }
@@ -33,7 +35,6 @@ class Main {
                 printTable();
             else
                 System.out.println("This puzzle has no final configuration.");
-            System.out.println();
         }
         input.close();
     }
