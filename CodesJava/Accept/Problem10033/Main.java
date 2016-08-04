@@ -19,6 +19,10 @@ class Main {
         for (int i = 0; i < testCases; i++) {
             if (i > 0)
                 System.out.println();
+<<<<<<< HEAD
+=======
+            boolean flag = true;
+>>>>>>> ff85e19d7661e387f766342a8315dfa4b537b2d3
             in = input.readLine();
             int j = 0;
             while(in != null && !in.equals("")) {
