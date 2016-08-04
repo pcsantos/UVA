@@ -14,7 +14,11 @@ class Main {
     
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));    
         String in;
+        boolean flag = false;
         while (!(in = input.readLine()).equals("0 0")) {
+            if (flag)
+                System.out.println();
+            flag = true;
             StringTokenizer st = new StringTokenizer(in);
             int size = Integer.parseInt(st.nextToken());
             String number = st.nextToken();
@@ -69,7 +73,6 @@ class Main {
             }
         }
         printDisplay();
-        System.out.println();
     }
     
     private static void zero() {
