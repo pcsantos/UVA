@@ -89,7 +89,7 @@ class Main {
             return true;
         Candidate candidate = Collections.max(candidates);
         float percent = (float) candidate.getVotes() / totalVotes;
-        if (percent <= 0.5) {
+        if (percent < 0.5) {
             removeCandidatesWithLessVotes();
             return false;
         }
