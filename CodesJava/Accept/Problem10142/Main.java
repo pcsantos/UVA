@@ -126,10 +126,6 @@ class Main {
             Integer value = new Integer(candidate);
             this.votes.remove(value);
         }
-
-        int getFirst() {
-            return votes.get(0);    
-        }
     }
 
 
