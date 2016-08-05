@@ -9,7 +9,7 @@ class Main {
         String in;
         while ((in = input.readLine()) != null) {
             String out = getOutput(in);
-            System.out.println(out);
+            //System.out.println(out);
         }
         input.close();
     }
@@ -22,20 +22,24 @@ class Main {
             int value = Integer.parseInt(st.nextToken());
             arrayList.add(value);
         }
+        int min = Collections.min(arrayList);
+        int max = Collections.max(arrayList);
 
-        int maxValue = Collections.max(arrayList); 
-        int[] array = new int[arrayList.size()];
-
-        int j = 0;
-        for (Integer value : arrayList) {
-            array[j++] = (int) value;
+        Set<Integer> diffBetweenNumbers = new HashSet<>();
+        for (int i = 1; i < arrayList.size(); i++) {
+            int value = Math.abs(arrayList.get(i) - arrayList.get(i-1));
+            System.out.print(value + " ");
+            //if (diffBetweenNumbers.contains(value))
+              //  return "Not Jolly";
+            diffBetweenNumbers.add(value);
         }
-
-        for (int i = 0; i < arrayList.size() - 1; i++) {
-            int abs = Math.abs(array[i]-array[i+1]);
-            if (abs > maxValue)
-                return "Not jolly";
+        System.out.println();
+        
+        /*Iterator it = diffBetweenNumbers.iterator();
+        while (it.hasNext()) {
+            System.out.print(it.next() + "  ");
         }
+        System.out.println();*/
 
         return "Jolly";
     }
