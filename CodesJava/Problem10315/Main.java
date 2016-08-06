@@ -20,7 +20,6 @@ class Main {
     
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));    
         String in;
-        int m = 0;
         while ((in = input.readLine()) != null) {
             Hand black = new Hand(in.substring(0,14));
             Hand white = new Hand(in.substring(15));
