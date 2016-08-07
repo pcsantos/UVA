@@ -7,13 +7,13 @@ class Main {
     
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in)); 
         String in;
-        while((in = input.readLine()).equals(""));
-        int testCases = Integer.parseInt(in);
+        int testCases = Integer.parseInt(input.readLine().trim());
         for (int i = 0; i < testCases; i++) {
             while((in = input.readLine()).equals(""));
             StringTokenizer st = new StringTokenizer(in);
             int papers = Integer.parseInt(st.nextToken());
             int authors = Integer.parseInt(st.nextToken());
+            System.out.println(papers + "   " + authors);
             ArrayList<CoAuthor> list = new ArrayList<CoAuthor>();
             for (int j = 0; j < papers; j++) {
                 while((in = input.readLine()).equals(""));
@@ -49,54 +49,9 @@ class Main {
     }
 
     private static HashSet<Author> classifyAuthors(ArrayList<CoAuthor> list) {
-        String erdos = "Erdos, P.";
-        Author author = new Author(erdos, 1);
-        LinkedList<Author> authors =  new LinkedList<Author>();
-        authors.add(author);
-        ArrayList<String> names;
-        HashSet<Author> ranked = new HashSet<>();
-        int erdosNumber = 1;
-        while (authors.size() > 0) {
-            author = authors.removeLast();
-            ranked.add(author);
-            ArrayList<CoAuthor> toRemove = new ArrayList<>();
-            for (CoAuthor coAuthor : list) {
-                names = coAuthor.getNames();
-                for (String s : names) {
-                    if (s.equals(author.getName())) {
-                        insertAuthors(names, authors, erdosNumber, ranked);
-                        toRemove.add(coAuthor);
-                        break;
-                    }
-                }    
-            }
-            for (CoAuthor coAuthor : toRemove)
-                list.remove(coAuthor);
-            erdosNumber++; 
-        }
-        return ranked;
+        return null;
     }
 
-    private static void insertAuthors(ArrayList<String> names, LinkedList<Author> authors, 
-                        int erdosNumber, HashSet<Author> ranked) {
-        
-        for (String name : names) {
-            boolean insert = true;
-
-            Iterator it = ranked.iterator();
-            while (it.hasNext()) {
-                Author a = (Author) it.next();
-                if (a.getName().equals(name)) {
-                    insert = false;
-                    break;
-                }
-            }
-            if (insert) {
-                Author author = new Author(name, erdosNumber);
-                authors.addFirst(author);
-            }
-        }
-    }
 
     static class Author {
         private String name;
