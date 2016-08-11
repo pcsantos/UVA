@@ -22,8 +22,10 @@ class Main {
             st = new StringTokenizer(in);
             int low = Integer.parseInt(st.nextToken());
             int high = Integer.parseInt(st.nextToken());
+            if(primes[low])
+                low -= 1;
             int out = primeDigits[high] - primeDigits[low];
-            stringBuilder.append(out+"\n");
+            stringBuilder.append(out + "\n");
             if (stringBuilder.length() > 24900) {
                 output.write(stringBuilder.toString());
                 stringBuilder.delete(0, stringBuilder.length());
