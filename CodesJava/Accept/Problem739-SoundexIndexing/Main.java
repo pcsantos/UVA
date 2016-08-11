@@ -3,7 +3,7 @@ import java.io.*;
 
 class Main {
 
-    private static Map<String, Integer> codes;
+    private static Map<Character, Integer> codes;
     private static int CODE_SIZE = 4;
 
     public static void main(String[] args) throws IOException {
@@ -20,10 +20,10 @@ class Main {
     }
 
     private static String getOutput(String in) {
-        StringBuilder output = new StringBuilder(in.charAt(0)+"");
+        StringBuilder output = new StringBuilder(in.charAt(0));
         for (int i = 1; i < in.length(); i++) {
-            String first = in.charAt(i-1) + "";
-            String next = in.charAt(i) + "";
+            String first = in.charAt(i-1);
+            String next = in.charAt(i);
             if (!first.equals(next)) {
                 if (codes.get(first) != codes.get(next) && codes.get(next) != 0) {
                     output.append(codes.get(next));
@@ -44,31 +44,31 @@ class Main {
     private static void fillTableMap() {
         codes = new HashMap<String, Integer>();
 
-        codes.put("A", 0);
-        codes.put("E", 0);
-        codes.put("I", 0);
-        codes.put("O", 0);
-        codes.put("U", 0);
-        codes.put("Y", 0);
-        codes.put("W", 0);
-        codes.put("H", 0);
-        codes.put("B", 1);
-        codes.put("P", 1);
-        codes.put("F", 1);
-        codes.put("V", 1);
-        codes.put("C", 2);
-        codes.put("S", 2);
-        codes.put("K", 2);
-        codes.put("G", 2);
-        codes.put("J", 2);
-        codes.put("Q", 2);
-        codes.put("X", 2);
-        codes.put("Z", 2);
-        codes.put("D", 3);
-        codes.put("T", 3);
-        codes.put("L", 4);
-        codes.put("M", 5);
-        codes.put("N", 5);
-        codes.put("R", 6);
+        codes.put('A', 0);
+        codes.put('E', 0);
+        codes.put('I', 0);
+        codes.put('O', 0);
+        codes.put('U', 0);
+        codes.put('Y', 0);
+        codes.put('W', 0);
+        codes.put('H', 0);
+        codes.put('B', 1);
+        codes.put('P', 1);
+        codes.put('F', 1);
+        codes.put('V', 1);
+        codes.put('C', 2);
+        codes.put('S', 2);
+        codes.put('K', 2);
+        codes.put('G', 2);
+        codes.put('J', 2);
+        codes.put('Q', 2);
+        codes.put('X', 2);
+        codes.put('Z', 2);
+        codes.put('D', 3);
+        codes.put('T', 3);
+        codes.put('L', 4);
+        codes.put('M', 5);
+        codes.put('N', 5);
+        codes.put('R', 6);
     }
 }

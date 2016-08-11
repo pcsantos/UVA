@@ -3,7 +3,7 @@ import java.io.*;
 
 class Main {
 
-    private static HashMap<String, String> map = new HashMap<String, String>();
+    private static HashMap<Character, Character> map = new HashMap<Character, Character>();
     private static String keyPhrase = "the quick brown fox jumps over the lazy dog";
 
     public static void main(String[] args) throws IOException {
@@ -44,7 +44,7 @@ class Main {
         setMap(in);
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < in.length(); i++) {
-            sb.append(map.get("" + in.charAt(i)));       
+            sb.append(map.get(in.charAt(i)));       
         }
         if (sb.toString().equals(keyPhrase))
             return true;
@@ -54,14 +54,14 @@ class Main {
 
     private static void setMap(String in) {
         for (int i = 0; i < in.length(); i++) {
-            map.put("" + in.charAt(i), "" + keyPhrase.charAt(i));
+            map.put(in.charAt(i), keyPhrase.charAt(i));
         }
     }
 
     private static void printOutput(ArrayList<String> lines) {
         for (String line : lines) {
             for (int i = 0; i < line.length(); i++) {
-                System.out.print(map.get(""+line.charAt(i)));
+                System.out.print(map.get(line.charAt(i)));
             }
             System.out.println();
         }
