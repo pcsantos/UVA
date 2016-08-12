@@ -43,8 +43,8 @@ class Main {
         String reverse = new StringBuffer(word).reverse().toString();
         for (int i = 0 ; i < word.length(); i++) {
 
-            String charReverse = charAndReverse.get(word.charAt(i));
-            String charToCompare = reverse.charAt(i);
+            char charReverse = charAndReverse.get(word.charAt(i));
+            char charToCompare = reverse.charAt(i);
             if (charReverse == null)
                 return false;
             if (!charReverse.equals(charToCompare))

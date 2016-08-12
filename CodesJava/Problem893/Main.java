@@ -20,19 +20,26 @@ class Main {
             int month = Integer.parseInt(st.nextToken());    
             int year = Integer.parseInt(st.nextToken());
             String answer = getDate(numberOfDays, dayOfMonth, month, year);
-            if (answer != null) {
+            if (!in.equals("0 0 0 0")) {
                 stringBuilder.append(answer);
                 stringBuilder.append('\n');
             }
         }
-        input.close();
         output.write(stringBuilder.toString());
         final long finalTime = System.currentTimeMillis();
         output.write("Final execution Time: " + (finalTime - startTime) + "\n");
         output.flush();
         output.close();
+        input.close();
     }
 
+    private static String getDate(int numberOfDays, int dayOfMonth, int month, int year) {
+    
+        Calendar cal = new GregorianCalendar(year, month-1, dayOfMonth);
+        cal.add((GregorianCalendar.DAY_OF_MONTH), numberOfDays);
+        return cal.get(Calendar.DAY_OF_MONTH) + " " + (cal.get(Calendar.MONTH)+1) + " " + cal.get(Calendar.YEAR);
+    }
+/*
     private static String getDate(int numberOfDays, int dayOfMonth, int month, int year) {
 
             if (numberOfDays == 0 && dayOfMonth == 0 && month == 0 && year == 0)
@@ -128,5 +135,5 @@ class Main {
 
     private static boolean isLeapYear(int year) {
         return ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0));
-    }
+    }*/
 }
