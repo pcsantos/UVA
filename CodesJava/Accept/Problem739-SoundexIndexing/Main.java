@@ -22,8 +22,8 @@ class Main {
     private static String getOutput(String in) {
         StringBuilder output = new StringBuilder(in.charAt(0));
         for (int i = 1; i < in.length(); i++) {
-            String first = in.charAt(i-1);
-            String next = in.charAt(i);
+            char first = in.charAt(i-1);
+            char next = in.charAt(i);
             if (!first.equals(next)) {
                 if (codes.get(first) != codes.get(next) && codes.get(next) != 0) {
                     output.append(codes.get(next));
