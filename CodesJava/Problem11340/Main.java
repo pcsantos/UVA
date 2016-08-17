@@ -3,7 +3,7 @@ import java.io.*;
 
 class Main {
 
-    private static Map<String, Integer> tableValues = new HashMap<String, Integer>();
+    private static Map<Character, Integer> tableValues = new HashMap<Character, Integer>();
 
     public static void main(String[] args) throws IOException {
     
@@ -16,7 +16,7 @@ class Main {
                 StringTokenizer st = new StringTokenizer(in);
                 String key = st.nextToken();
                 int value = Integer.parseInt(st.nextToken());
-                tableValues.put(key, value);
+                tableValues.put(key.charAt(0), value);
             }
             int qtdLines = Integer.parseInt(input.readLine());
             float value = 0;
@@ -34,7 +34,7 @@ class Main {
     
         float value = 0;
         for (int i = 0; i < in.length(); i++) {
-            String key = in.charAt(i)+"";
+            char key = in.charAt(i);
             if (tableValues.containsKey(key))
                 value += tableValues.get(key);
         }
