@@ -4,24 +4,21 @@ import java.io.*;
 class Main {
 
     private static Map<Character, Integer> codes;
-    private static int CODE_SIZE = 4;
 
     public static void main(String[] args) throws IOException {
         fillTableMap(); 
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));    
         String in;
-        System.out.format("%-8s %-24s %s\n", "", "NAME", "SOUNDEX CODE");
         while ((in = input.readLine()) != null) {
-            String output = getOutput(in); 
-            System.out.format("%-8s %-24s %s\n", "", in, output);
+            System.out.println(getOutput(in)); 
         }
-        System.out.format("%-18s %s\n", "", "END OF OUTPUT");
         input.close();
     }
 
     private static String getOutput(String in) {
         StringBuilder output = new StringBuilder();
-        output.append(in.charAt(0));
+        if (codes.get(in.charAt(0)) != 0)
+            output.append(codes.get(in.charAt(0)));
         for (int i = 1; i < in.length(); i++) {
             char first = in.charAt(i-1);
             char next = in.charAt(i);
@@ -30,14 +27,6 @@ class Main {
                     output.append(codes.get(next));
                 }
             }
-        }
-        
-        if (output.length() < CODE_SIZE) {
-            for (int i = output.length(); i < CODE_SIZE; i++) {
-                output.append(0);       
-            }
-        } else {
-            output.setLength(CODE_SIZE);
         }
         return output.toString();
     }
