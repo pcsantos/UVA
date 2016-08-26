@@ -3,11 +3,14 @@ import java.io.*;
 
 class Main {
     public static void main(String[] args) throws IOException {
-        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));    
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in, "ISO-8859-1"));
+        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out, "ISO-8859-1"));
         String in;
         while ((in = input.readLine()) != null) {
-            System.out.println(getOutput(in));
+            output.write(getOutput(in)+"\n");
+            output.flush();
         }
+        output.close();
         input.close();
     }
 
@@ -26,7 +29,7 @@ class Main {
                         i = j - 1;
                         break;
                     }
-                    if (j == array.length-1)
+                    if (j == array.length - 1)
                         i = j;
                 }
                 out.append(changeWord(word.toString()));
