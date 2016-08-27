@@ -1,0 +1,4 @@
+50 things taken 25 at a time is 126410606437752 exactly.
+50 things taken 27 at a time is 108043253365600 exactly.
+99 things taken 99 at a time is 1 exactly.
+
