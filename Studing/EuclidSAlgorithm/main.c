@@ -86,7 +86,7 @@ void reduce(Rational *inrat, Rational *outrat) {
         b = inrat->numerator;
     }
     
-    while ( b != 0) {
+    while (b != 0) {
         rem = a % b;
         a = b;
         b = rem;
