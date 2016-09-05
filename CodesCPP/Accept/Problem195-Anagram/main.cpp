@@ -28,7 +28,6 @@ int main(void) {
             printf("\n");
         } while (next_permutation(str, str + size));
     }
-
     return 0;
 }
 
