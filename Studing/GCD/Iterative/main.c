@@ -12,7 +12,7 @@ int main(void) {
     return 0;
 }
 
-/*b > a*/
+/*b < a*/
 int gcd(int a, int b) {
     int aux;
     while (b != 0) {

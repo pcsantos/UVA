@@ -2,15 +2,21 @@
 
 long long fib(long long);
 long long divideConquerFib(long long);
+long long fibonacci(long long);
 
 int main(void) {
 
     printf("%li\n", fib(8));
     printf("%li\n", divideConquerFib(8));
-    printf("%li\n", fib(80));
-    printf("%li\n", divideConquerFib(80));
+    printf("%li\n", fibonacci(8));
 
     return 0;
+}
+
+long long fibonacci(long long n) {
+    if (n == 1 || n == 2)
+        return 1;
+    return fibonacci(n - 2) + fibonacci(n - 1);
 }
 
 long long fib(long long n) {
