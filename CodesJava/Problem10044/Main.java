@@ -52,7 +52,6 @@ class Main {
         return null;
     }
 
-
     static class Author {
         private String name;
         private int erdosNumber;
