@@ -19,10 +19,10 @@ class Main {
     }
 
     private static int process(String in) {
-        for (int i = 1; i < in.length() / 2; i++) {
-            String sub = in.substring(0, i + 1);
-            if (isPeriodic(sub, in, i + 1)) {
-                return i + 1;        
+        for (int i = 1; i <= in.length() / 2; i++) {
+            String sub = in.substring(0, i);
+            if (isPeriodic(sub, in, i)) {
+                return i;        
             }
         }
         return in.length();
@@ -30,6 +30,8 @@ class Main {
 
     private static boolean isPeriodic(String sub, String in, int size) {
         String candidate;
+        if (in.length() % size != 0)
+            return false;
         for (int i = 0; i <= in.length() - size; i+= size) {
             candidate = in.substring(i, i + size);
             if (!candidate.equals(sub))
