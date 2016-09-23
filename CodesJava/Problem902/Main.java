@@ -38,6 +38,7 @@ class Main {
     static class Password implements Comparable<Password> {
         private String pass;
         private int occur;
+        
         Password(String pass) {
             this.pass = pass;
             this.occur = 1;
@@ -60,7 +61,7 @@ class Main {
                 return 1;
             if (this.occur < another.getOccur())
                 return -1;
-            return 0;
+            return this.pass.compareTo(another.getPass());
         }
     }
 }
