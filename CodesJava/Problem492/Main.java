@@ -3,14 +3,11 @@ import java.io.*;
 
 class Main {
     public static void main(String[] args) throws IOException {
-        BufferedReader input = new BufferedReader(new InputStreamReader(System.in, "ISO-8859-1"));
-        BufferedWriter output = new BufferedWriter(new OutputStreamWriter(System.out, "ISO-8859-1"));
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in, "UTF-8"));
         String in;
         while ((in = input.readLine()) != null) {
-            output.write(getOutput(in)+"\n");
-            output.flush();
+            System.out.println(getOutput(in));
         }
-        output.close();
         input.close();
     }
 

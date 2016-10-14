@@ -9,7 +9,7 @@
 int palindrome(char*);
 
 int main(void) {
-    char word[255];
+    char word[WORD_SIZE];
     scanf("%s", word);
     if (palindrome(word)) {
         printf("Is palindrome.\n");
