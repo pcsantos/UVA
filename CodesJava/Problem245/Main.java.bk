@@ -1,0 +1,69 @@
+import java.util.*;
+import java.io.*;
+
+class Main {
+
+    private static LinkedList<String> list = new LinkedList<>();
+    private static ArrayList<Pair> arr = new ArrayList<>();
+    public static void main(String[] args) throws IOException {
+    
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));    
+        String in;
+        StringBuilder sb = new StringBuilder();
+        while (!(in = input.readLine()).trim().equals("0")) {
+            changeOutput(in);
+            sb.append(in + "\n");
+        }
+        in = sb.toString();
+        for (Pair p : arr) {
+            in = in.replaceFirst(p.getIndex(), p.getValue());
+        }
+        System.out.print(in);
+        input.close();
+    }
+    
+    private static void changeOutput(String in) {
+        String aux = in;
+        StringTokenizer st = new StringTokenizer(aux);
+        while (st.hasMoreTokens()) {
+            addWord(st.nextToken());
+        }
+        System.out.println(in);
+        for (Pair p : arr)
+            System.out.println(p.getIndex() + "  " + p.getValue());
+    }
+    
+    private static void addWord(String word) {
+        StringTokenizer st = new StringTokenizer(word, "-'.,");
+        String w;
+        while (st.hasMoreTokens()) {
+            w = st.nextToken();
+            if (w.matches("\\d+")) {
+                int index = Integer.parseInt(w) - 1;
+                String change = list.get(index);
+                Pair pair = new Pair(w, change);
+                arr.add(pair);
+                change = list.remove(index);
+                list.addFirst(change);
+            } else
+                list.addFirst(w);
+        }
+    }
+
+    static class Pair {
+        private String index;
+        private String value;
+        Pair(String index, String value) {
+            this.index = index;
+            this.value = value;
+        }
+
+        private String getIndex() {
+            return this.index;
+        }
+
+        private String getValue() {
+            return this.value;
+        }
+    }
+}
