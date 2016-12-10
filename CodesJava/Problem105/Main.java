@@ -2,53 +2,41 @@ import java.util.*;
 import java.io.*;
 
 class Main {
-    private static final int SIZE = 50;
-    private static char[][] grid = new char[SIZE][SIZE];
-    private static ArrayList<Integer> coord = new ArrayList<>();
 
+    private static int[] arr = new int[10002];
+    private static int maxRight = 0;
     public static void main(String[] args) throws IOException {
-        fillGrid(); 
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));    
         String in;
         while ((in = input.readLine()) != null) {
-            setBuildingToGrid(in); 
-            printGrid();
+            insertBuild(in);
         }
-        getCoord();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 1; i <=maxRight; i++)
+            System.out.print(arr[i]+" ");
+        System.out.println();
+        for (int i = 1; i <= maxRight + 1; i++)
+            if (arr[i] != arr[i - 1]) {
+                if (arr[i] > arr[i - 1])
+                    sb.append(i + " " + arr[i] + " ");
+                else
+                    sb.append((i - 1) + " " + arr[i] + " ");
+
+            }
+        System.out.println(sb.toString().trim());
         input.close();
     }
-    
-    private static void getCoord() {
-    
-    }
-    
-    private static void setBuildingToGrid(String in) {
+
+    private static void insertBuild(String in) {
         StringTokenizer st = new StringTokenizer(in);
         int left = Integer.parseInt(st.nextToken());
-        int height = Integer.parseInt(st.nextToken());
-        int rigth = Integer.parseInt(st.nextToken());
-
-        for (int i = 0; i <= height; i++) {
-            for (int j = left; j <= rigth; j++) {
-                grid[i][j] = 'X';
-            }
+        int weight = Integer.parseInt(st.nextToken());
+        int right = Integer.parseInt(st.nextToken());
+        for (int i = left; i <= right; i++) {
+            if (arr[i] < weight)
+                arr[i] = weight;
+            if (maxRight < right)
+                maxRight = right;
         }
-    }
-
-    private static void fillGrid() {
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++) {
-                grid[i][j] = '0';
-            }
-        }   
-    }
-
-    private static void printGrid() {
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++) {
-                System.out.print(grid[i][j]);
-            }
-            System.out.println();
-        }   
     }
 }

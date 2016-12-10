@@ -3,10 +3,10 @@
 #define TRUE 1
 #define FALSE 0
 
-void waveDraw(int amplitude);
+void waveDraw(int);
 
 int main(void) {
-    int testCases, i, j;
+    int testCases, i;
     int amplitude, frequency;
     int flag = FALSE;
     scanf("%d\n", &testCases);
