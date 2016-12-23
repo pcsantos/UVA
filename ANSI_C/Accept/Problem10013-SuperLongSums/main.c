@@ -14,7 +14,8 @@ int main(void) {
 
     scanf("%d\n", &testCases);
     for (i = 0; i < testCases; i++) {
-        if (i > 0) printf("\n");
+        if (i > 0) 
+            printf("\n");
         scanf("%d\n", &size);
         for (j = 0; j < size; j++) {
             scanf("%d %d\n", &a[j], &b[j]);
@@ -30,11 +31,11 @@ int main(void) {
                 over = 0;
             }
         }
+        if (over)
+            printf("1");
         for (j = 0; j < size; j++)
             printf("%d", sum[j]);
         printf("\n");
     }
-
-
     return 0;
 }
