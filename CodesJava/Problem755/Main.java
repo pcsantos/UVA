@@ -32,15 +32,17 @@ class Main {
                     arrList.add(phone);
                 }
             }
-            Collections.sort(arrList);
-            boolean flag = true;
-            for (Phone p : arrList) {
-                if (p.getTimes() > 1) {
-                    System.out.println(p.getPhone().substring(0,3) + "-" + p.getPhone().substring(3) + " " + p.getTimes());
-                    flag = false;
-                }
+
+            ArrayList<Phone> newList = new ArrayList<>();
+            for (Phone p: arrList)
+                if (p.getTimes() > 1)
+                    newList.add(p);
+
+            Collections.sort(newList);
+            for (Phone p : newList) {
+                System.out.println(p.getPhone().substring(0,3) + "-" + p.getPhone().substring(3) + " " + p.getTimes());
             }
-            if (flag)
+            if (newList.isEmpty())
                 System.out.println("No duplicates.");
         }
         input.close();
