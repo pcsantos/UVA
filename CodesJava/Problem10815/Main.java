@@ -10,13 +10,14 @@ class Main {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));    
         String in;
         while ((in = input.readLine()) != null) {
-            char[] arr = in.toLowerCase().toCharArray();
+            char[] arr = in.trim().toLowerCase().toCharArray();
             StringBuilder word = new StringBuilder();
             for (int i = 0; i < arr.length; i++) {
                 if (Character.isLetter(arr[i])) {
                     word.append(arr[i]);
                 } else {
-                    set.add(word.toString());
+                    if (!word.toString().trim().equals(""))
+                        set.add(word.toString());
                     while (i < arr.length && !Character.isLetter(arr[i]))
                         i++;
                     i--;
